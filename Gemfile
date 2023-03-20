@@ -71,6 +71,11 @@ group :test do
   gem "webdrivers"
 end
 
+group :development, :test do
+  gem 'rspec-rails', '~> 6.0.0'
+  gem 'shoulda-matchers', '~> 5.0'
+end
+
 gem 'devise'
 gem 'cancancan'
 
