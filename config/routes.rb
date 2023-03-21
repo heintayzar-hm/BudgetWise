@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   root to: "splash#index"
-  resources :users do
-    resources :categories
-    resources :transcations
-  end
+  resources :users
+  resources :categories
+  resources :transcations
+
 end

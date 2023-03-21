@@ -31,10 +31,11 @@
 
       }
     </script>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'false' %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'false' %>
   </head>
   <body class="text-black dark:text-white font-normal">
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
