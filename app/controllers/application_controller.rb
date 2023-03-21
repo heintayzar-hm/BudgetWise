@@ -15,4 +15,8 @@ class ApplicationController < ActionController::Base
   def public_page?
     controller_name == 'home' && action_name == 'index'
   end
+
+  def after_sign_in_path_for()
+    categories_path
+  end
 end

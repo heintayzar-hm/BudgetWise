@@ -1,0 +1,9 @@
+<main class="grid grid-cols-1 h-screen">
+<div class="w-full h-auto relative m-auto">
+<%= image_tag "mainImage.png", alt: "Main image", class: "w-full h-auto" %>
+</div>
+<div class="text-center flex flex-col px-4 relative my-auto">
+    <%= link_to "Log In", new_user_session_path, class: "nav-link font-important py-2 bg-mainTheme w-full text-white" %>
+    <%= link_to "Sign Up", new_user_registration_path, class: "nav-link font-important py-2 py-3 w-full text-mainTheme" %>
+</div>
+</main>

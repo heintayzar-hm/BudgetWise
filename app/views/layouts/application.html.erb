@@ -5,14 +5,17 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,300&family=Pacifico&display=swap" rel="stylesheet">    <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
       colors: {
         // Configure your color palette here
-        mainTheme: 'white',
+        mainTheme: '#3778c2',
         darkTheme: '#06b6d4',
       },
       boxShadow: {
@@ -20,8 +23,8 @@
       }
           },
           fontFamily: {
-      important: ["Josefin Sans", "sans-serif"],
-      normal: ["Josefin Sans", "sans-serif"],
+      important: ["Pacifico", "sans-serif"],
+      normal: ["Cormorant Garamond", "sans-serif"],
           },
         },
         darkMode: 'class',
@@ -31,9 +34,7 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-  <body>
-        <%= render partial: "/components/navbar" %>
-
+  <body class="text-black dark:text-white font-normal">
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
