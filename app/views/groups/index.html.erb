@@ -1,0 +1,33 @@
+<% content_for :page_title do %>
+  Categories
+<% end %>
+<% show_search_bar = true %>
+<main class="bg-slate-200 flex min-h-screen flex-col">
+
+<%= render partial: '/components/navbar', locals: { show_search_bar: show_search_bar } %>
+<%= render partial: '/components/sorting_component' %>
+
+
+<ul class="flex flex-col m-4 gap-5 grow cards">
+  <% @groups.each do |group| %>
+    <li class="p-2 bg-white max-h-[100px]">
+     <a href="/groups/<%= group.id%>" class="grid gap-4 grid-cols-4">
+     <div class="max-w-[100px] col-span-1">
+      <%= image_tag url_for(group.icon) if group.icon.present? %>
+      <%= image_tag "mainImage2.png" unless group.icon.present?%>
+     </div>
+     <div class="col-span-2 flex flex-col">
+      <span><%= group.name.truncate(20) %></span>
+     <span>  <%= group.human_date%></span>
+     </div>
+     <span class="col-span-1">  <%= group.total%></span>
+     </a>
+    </li>
+  <% end %>
+</ul>
+
+
+<div class="bg-mainTheme2 text-white text-center font-important font-semibold p-1 block">
+<%= link_to "New Category", new_group_path, id:"new-category", class: "w-full border-white border-solid  border-2 block"%>
+</div>
+</main>

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   root to: "splash#index"
   resources :users
-  resources :categories
-  resources :transcations
+  resources :groups
+  resources :contracts
 
 end

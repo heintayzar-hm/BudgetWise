@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const themeChanger = document.querySelector('.theme-changer');
+
+    // functions
     const toggleDarkMode = () => {
         document.documentElement.classList.toggle('dark');
         themeChanger.children[0].classList.toggle('hidden');
@@ -7,18 +8,50 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('darkMode', document.documentElement.classList.contains('dark'));
     }
     const handleHamburger = (x) => {
+        navigationLinks.classList.toggle('active');
+        document.body.classList.toggle('overflow-hidden');
         x.classList.toggle("change");
-      }
+    }
+
+    const handleSort = (event) => {
+        event.preventDefault();
+        const sortParams = event.target.dataset
+
+        // handle for reverse sort
+        const updateUrl = `${window.location.pathname}?${new URLSearchParams(sortParams)}`
+          fetch(updateUrl).then((response) => {
+              return (response.text());
+          }).then((html) => {
+              const parser = new DOMParser();
+              const newDoc = parser.parseFromString(html, "text/html");
+              const newCards = newDoc.querySelector(".cards");
+              const oldCards = document.querySelector(".cards");
+              oldCards.innerHTML = newCards.innerHTML;
+              window.history.pushState({}, "", updateUrl);
+          });
+    }
+
+    // check if dark mode is enabled
     if (localStorage.getItem('darkMode') === 'true') {
         toggleDarkMode();
     }
+
+    // add event listener to theme changer
+    const themeChanger = document.querySelector('.theme-changer');
     themeChanger.addEventListener('click',toggleDarkMode);
 
+
+    // add event listener to hamburger
     const hamburger = document.querySelector('.humburger');
     const navigationLinks = document.querySelector('.navigation-links');
     hamburger.addEventListener('click', () => {
-        navigationLinks.classList.toggle('active');
-        document.body.classList.toggle('overflow-hidden');
         handleHamburger(hamburger);
     });
+
+    // add event listener to navigation links
+    const sortLinks = document.querySelectorAll(".sort-link");
+    sortLinks.forEach((link) => {
+      link.addEventListener("click", handleSort);
+    } );
+
   });

@@ -1,0 +1,23 @@
+    <%= render partial: "/components/errors_message", locals: {object: @group} %>
+
+<div class="sm:px-[20%] px-[10%] py-6">
+ <h1 class="font-bold font-important text-white">Create a new Categories</h1>
+</div>
+<%= form_with model:  @group,url: groups_path, method: :post, local: true, class:"", scope: :group do |f| %>
+  <div class="sm:px-[20%] px-[10%] ">
+  <%= f.label :name %><br>
+  <%= f.text_field :name, class: "" %>
+  </div>
+
+
+   <div class="sm:px-[20%] px-[10%]">
+      <%= f.file_field :icon, class: "" %>
+      <%= f.label :icon %>
+    </div>
+<div class="sm:px-[20%] px-[10%]">
+<%= f.submit "Create" , class: ""%>
+
+</div>
+
+
+  <% end %>
