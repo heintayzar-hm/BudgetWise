@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
   load_and_authorize_resource :group, only: [:create]
 
   def index
-    @groups = sort_groups(current_user.groups.all,params.permit(:sortBy, :sortOrder))
+    @groups = sorting_handler(current_user.groups.all, params.permit(:sortBy, :sortOrder))
     @groups = @groups.includes(icon_attachment: :blob)
   end
 
@@ -20,21 +20,28 @@ class GroupsController < ApplicationController
     end
   end
 
+  def show
+    @group = Group.find_by(id: params[:id])
+    return redirect_to root_path if @group.blank?
+
+    @contracts = sorting_handler(@group.contracts, params.permit(:sortBy, :sortOrder))
+  end
+
   private
 
   def group_params
     params.require(:group).permit(:name)
   end
 
-  def sort_groups(groups, options = {})
+  def sorting_handler(obj, options = {})
     sort_by = options[:sortBy].presence || :name
     sort_order = options[:sortOrder].presence || :asc
 
     if %w[name created_at updated_at].include?(sort_by) &&
-        %w[asc desc].include?(sort_order)
-      groups.order("#{sort_by} #{sort_order}")
+       %w[asc desc].include?(sort_order)
+      obj.order("#{sort_by} #{sort_order}")
     else
-      groups.order(:name) # Default sorting
+      obj.order('updated_at desc') # Default sorting
     end
   end
 end

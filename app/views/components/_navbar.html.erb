@@ -23,18 +23,18 @@
 </nav>
 <div class="relative">
 
-  <%if user_signed_in?%>
-  <div class="navigation-links py-5 bg-gradient-to-b from-blue-400 to-blue-600 text-white font-semibold absolute  left-0 right-0">
-    <div class="py-8 gap-3 flex flex-col items-center justify-center">
-    <%= image_tag "default/default-human.jpg", alt: "Loading failed", class: "max-w-[80px] rounded-full max-h-[80px]" %>
-    <h2><%= current_user.name%></h2>
-    </div>
+  <% if user_signed_in? && !back %>
+    <div class="navigation-links py-5 bg-gradient-to-b from-blue-400 to-blue-600 text-white font-semibold absolute  left-0 right-0">
+      <div class="py-8 gap-3 flex flex-col items-center justify-center">
+        <%= image_tag "default/default-human.jpg", alt: "Loading failed", class: "max-w-[80px] rounded-full max-h-[80px]" %>
+        <h2><%= current_user.name%></h2>
+      </div>
 
 
-    <div class="flex flex-col gap-2 text-center">
-    <%= link_to "Your Categories", groups_path, class: "nav-link" %>
-    <%= link_to "Your Transcation", contracts_path, class: "nav-link" %>
-    <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "logout-btn" %>
+      <div class="flex flex-col gap-2 text-center">
+        <%= link_to "Your Categories", groups_path, class: "nav-link" %>
+        <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "logout-btn" %>
+      </div>
     <div class="theme-changer hover:shadow-custom rounded-full p-1 cursor-pointer flex justify-center">
       <div class="light-theme">
         <%= render partial: "components/svg/sun_svg" %>
@@ -44,7 +44,6 @@
       </div>
     </div>
     </div>
-  </div>
-  <%end%>
+  <% end %>
 
 </div>

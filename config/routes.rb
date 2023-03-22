@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   root to: "splash#index"
   resources :users
   resources :groups
-  resources :contracts
+  resources :contracts do
+    get :new_contract, on: :collection
+  end
+
 
 end

@@ -4,6 +4,7 @@ class Group < ApplicationRecord
   has_many :contracts, through: :contract_groups,dependent: :destroy, foreign_key: "group_id"
   has_one_attached :icon
 
+  # for temporary group id
   validate :icon_type
   validates :name, presence: true, length: { maximum: 50 }
 
@@ -19,10 +20,10 @@ class Group < ApplicationRecord
   private
 
   def icon_type
-   if icon.attached? == false
+   unless icon.attached?
      errors.add(:icon, "is missing!")
    end
-   if !icon.content_type.in?(%('image/jpeg image/png'))
+   unless icon.content_type.in?(%('image/jpeg image/png'))
      errors.add(:icon, "needs to be a jpeg or png!")
    end
   end
