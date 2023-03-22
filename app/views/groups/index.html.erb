@@ -4,17 +4,17 @@
 <% show_search_bar = true %>
 <main class="bg-slate-200 flex min-h-screen flex-col">
 
-<%= render partial: '/components/navbar', locals: { show_search_bar: show_search_bar } %>
+<%= render partial: '/components/navbar', locals: { show_search_bar: show_search_bar, back: false } %>
 <%= render partial: '/components/sorting_component' %>
 
 
 <ul class="flex flex-col m-4 gap-5 grow cards">
   <% @groups.each do |group| %>
-    <li class="p-2 bg-white max-h-[100px]">
+    <li class="p-2 bg-white max-h-[120px]">
      <a href="/groups/<%= group.id%>" class="grid gap-4 grid-cols-4">
-     <div class="max-w-[100px] col-span-1">
-      <%= image_tag url_for(group.icon) if group.icon.present? %>
-      <%= image_tag "mainImage2.png" unless group.icon.present?%>
+     <div class="col-span-1">
+      <%= image_tag url_for(group.icon) ,class: " max-h-[100px] " if group.icon.present? %>
+      <%= image_tag "mainImage2.png", class: "max-h-[100px]" unless group.icon.present?%>
      </div>
      <div class="col-span-2 flex flex-col">
       <span><%= group.name.truncate(20) %></span>

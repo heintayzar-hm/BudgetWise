@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!
+  before_action :authenticate_user!, unless: :public_page?
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
@@ -13,10 +13,14 @@ class ApplicationController < ActionController::Base
   end
 
   def public_page?
-    controller_name == 'home' && action_name == 'index'
+    controller_name == 'splash' && action_name == 'index'
   end
 
-  def after_sign_in_path_for()
-    categories_path
+  def after_sign_in_path_for(_resource)
+    groups_path
+  end
+
+  def after_sign_out_path_for(_resource)
+    root_path
   end
 end

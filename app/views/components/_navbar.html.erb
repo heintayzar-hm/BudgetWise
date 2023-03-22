@@ -1,19 +1,29 @@
 
-    <nav class="bg-mainTheme dark:bg-darkTheme z-50 text-white">
+    <nav class="bg-mainTheme dark:bg-darkTheme z-50 text-white py-2">
   <div class="grid grid-cols-3">
     <div class="col-span-1 pl-3">
-      <%= render partial: "components/humburger_icon"%>
+       <%if back%>
+            <%= link_to root_path, class: "back-btn" do %>
+              <%= render partial: "components/svg/back_arrow_svg" %>
+            <% end %>
+      <%else%>
+            <%= render partial: "components/humburger_icon"%>
+      <%end%>
     </div>
     <h1 class="col-auto text-center font-important font-bold relative m-auto tracking-widest"><%= yield(:page_title) %></h1>
     <div class="col-span-1 flex-end flex items-center justify-end pr-3">
       <% if show_search_bar %>
-        <%= render partial: "components/search_svg", locals: { show_search_bar: show_search_bar } %>
+        <%= render partial: "components/svg/search_svg", locals: { show_search_bar: show_search_bar } %>
+      <%end%>
+      <% if content_for?(:submit)%>
+        <%= yield(:submit)%>
       <%end%>
     </div>
   </div>
 </nav>
 <div class="relative">
 
+  <%if user_signed_in?%>
   <div class="navigation-links py-5 bg-gradient-to-b from-blue-400 to-blue-600 text-white font-semibold absolute  left-0 right-0">
     <div class="py-8 gap-3 flex flex-col items-center justify-center">
     <%= image_tag "default/default-human.jpg", alt: "Loading failed", class: "max-w-[80px] rounded-full max-h-[80px]" %>
@@ -27,13 +37,14 @@
     <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "logout-btn" %>
     <div class="theme-changer hover:shadow-custom rounded-full p-1 cursor-pointer flex justify-center">
       <div class="light-theme">
-        <%= render partial: "components/sun_svg" %>
+        <%= render partial: "components/svg/sun_svg" %>
       </div>
       <div class="night-theme hidden">
-        <%= render partial: "components/moon_svg" %>
+        <%= render partial: "components/svg/moon_svg" %>
       </div>
     </div>
     </div>
   </div>
+  <%end%>
 
 </div>
