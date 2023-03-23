@@ -95,4 +95,3 @@ RSpec.describe ContractsController, type: :controller do
     end
   end
 end
-
