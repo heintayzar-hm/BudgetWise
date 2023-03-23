@@ -13,8 +13,8 @@
     <li class="p-2 bg-white max-h-[120px]">
      <a href="/groups/<%= group.id%>" class="grid gap-4 grid-cols-4">
      <div class="col-span-1">
-      <%= image_tag url_for(group.icon) ,class: " max-h-[100px] " if group.icon.present? %>
-      <%= image_tag "mainImage2.png", class: "max-h-[100px]" unless group.icon.present?%>
+<%= image_tag rails_blob_path(group.icon), class: "max-h-[100px]" if group.icon.attached? %>
+<%= image_tag "mainImage2.png", class: "max-h-[100px]" unless group.icon.attached? %>
      </div>
      <div class="col-span-2 flex flex-col">
       <span><%= group.name.truncate(20) %></span>

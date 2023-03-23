@@ -20,12 +20,9 @@ class Group < ApplicationRecord
   private
 
   def icon_type
-   unless icon.attached?
-     errors.add(:icon, "is missing!")
-   end
-   unless icon.content_type.in?(%('image/jpeg image/png'))
-     errors.add(:icon, "needs to be a jpeg or png!")
-   end
+    if icon.attached? && !icon.content_type.in?(%w(image/jpeg image/png))
+      errors.add(:icon, "needs to be a jpeg or png!")
+    end
   end
 
 end
