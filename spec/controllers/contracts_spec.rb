@@ -64,7 +64,7 @@ RSpec.describe ContractsController, type: :controller do
 
         it "sets a success flash message" do
           post :create, params: { contract: valid_attributes }
-          expect(flash[:success]).to eq("Transcation created successfully")
+          expect(flash[:notice]).to eq("Transaction created successfully.")
         end
       end
 
@@ -89,7 +89,7 @@ RSpec.describe ContractsController, type: :controller do
 
         it "sets an error flash message" do
           post :create, params: { contract: invalid_attributes }
-          expect(flash[:error]).to eq("Transcation creation failed")
+          expect(flash[:alert]).to eq("Transaction creation failed")
         end
       end
     end

@@ -14,8 +14,12 @@ class GroupsController < ApplicationController
     @group = current_user.groups.build(group_params)
     @group.icon.attach(params[:group][:icon])
     if @group.save
+      flash[:notice] = "Group was successfully created."
+
       redirect_to root_path
     else
+      flash[:alert] = "Group creation failed"
+
       render :new
     end
   end
@@ -36,7 +40,6 @@ class GroupsController < ApplicationController
   def sorting_handler(obj, options = {})
     sort_by = options[:sortBy].presence || :name
     sort_order = options[:sortOrder].presence || :asc
-    puts obj
     if %w[name created_at updated_at].include?(sort_by) &&
        %w[asc desc].include?(sort_order)
       obj.order("#{sort_by} #{sort_order}")

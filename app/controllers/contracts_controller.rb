@@ -12,12 +12,13 @@ class ContractsController < ApplicationController
 
     if @contract.save
       @contract.groups << @group
+      flash[:notice] = "Transaction created successfully."
+
       redirect_to root_path
-      flash[:success] = "Transcation created successfully"
     else
       @groups = current_user.groups
+      flash[:alert] = "Transaction creation failed"
       render :new
-      flash[:error] = "Transcation creation failed"
     end
   end
 
