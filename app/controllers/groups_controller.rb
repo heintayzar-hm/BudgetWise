@@ -2,8 +2,8 @@ class GroupsController < ApplicationController
   load_and_authorize_resource :group, only: [:create]
 
   def index
-    @groups = sorting_handler(current_user.groups.all, params.permit(:sortBy, :sortOrder))
-    @groups = @groups.includes(icon_attachment: :blob)
+    @groups = sorting_handler(current_user.groups.all.includes(icon_attachment: :blob), params.permit(:sortBy, :sortOrder))
+
   end
 
   def new
@@ -36,10 +36,15 @@ class GroupsController < ApplicationController
   def sorting_handler(obj, options = {})
     sort_by = options[:sortBy].presence || :name
     sort_order = options[:sortOrder].presence || :asc
-
+    puts obj
     if %w[name created_at updated_at].include?(sort_by) &&
        %w[asc desc].include?(sort_order)
       obj.order("#{sort_by} #{sort_order}")
+    elsif sort_by == 'amount' &&  %w[asc desc].include?(sort_order) && obj.first.model_name == 'Contract'
+      obj.order("amount #{sort_order} nulls last")
+    elsif sort_by == 'amount' &&  %w[asc desc].include?(sort_order) && obj.first.model_name == 'Group'
+      return obj.sort_by { |group| group.total }.reverse if sort_order == 'desc'
+      return obj.sort_by { |group| group.total } if sort_order == 'asc'
     else
       obj.order('updated_at desc') # Default sorting
     end

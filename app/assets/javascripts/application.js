@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const handleSort = (event) => {
         event.preventDefault();
         const sortParams = event.target.dataset
-
         // handle for reverse sort
         const updateUrl = `${window.location.pathname}?${new URLSearchParams(sortParams)}`
           fetch(updateUrl).then((response) => {
@@ -38,20 +37,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // add event listener to theme changer
     const themeChanger = document.querySelector('.theme-changer');
-    themeChanger.addEventListener('click',toggleDarkMode);
+    if (themeChanger) {
+        themeChanger.addEventListener('click', toggleDarkMode);
+    }
 
-
-    // add event listener to hamburger
+    // // add event listener to hamburger
     const hamburger = document.querySelector('.humburger');
     const navigationLinks = document.querySelector('.navigation-links');
-    hamburger.addEventListener('click', () => {
-        handleHamburger(hamburger);
-    });
-
+    if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            handleHamburger(hamburger);
+        });
+    }
     // add event listener to navigation links
     const sortLinks = document.querySelectorAll(".sort-link");
-    sortLinks.forEach((link) => {
-      link.addEventListener("click", handleSort);
-    } );
+    if (sortLinks) {
+        sortLinks.forEach((link) => {
+            link.addEventListener('click', handleSort);
+        });
+    }
 
   });

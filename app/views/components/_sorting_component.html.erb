@@ -1,9 +1,10 @@
 <div class="bg-mainTheme border-t text-white py-1">
- <ul class=" gap-5 grid grid-cols-[auto_auto_auto_auto] w-full overflow-scroll">
+ <ul class=" gap-5 grid grid-cols-[auto_auto_auto_auto_auto] w-full overflow-scroll">
     <li class="w-[90px] flex justify-center ">
     </li>
     <li class="w-[90px]"><%= link_to "Most ancient", "#", data: { sort_by: "created_at", sort_order: "asc" }, class: "sort-link" %></li>
     <li class="w-[90px]"><%= link_to "Most recent", "#", data: { sort_by: "updated_at", sort_order: "desc" }, class: "sort-link" %></li>
     <li class="w-[90px]"><%= link_to "Name", "#", data: { sort_by: "name", sort_order: "asc" }, class: "sort-link" %></li>
+    <li class="w-[90px]"><%= link_to "Amount", "#", data: { sort_by: "amount", sort_order: "desc" }, class: "sort-link" %></li>
  </ul>
 </div>

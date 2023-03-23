@@ -22,7 +22,7 @@
 
     <div class="my-4">
       <%= f.label :Categories %><br>
-      <%= f.select :group_id, @groups.collect {|group| [group.name, group.id]},required: true, { include_blank: false }, class: "form-select py-3 mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50", placeholder: "Categories" %>
+      <%= f.select :group_id, @groups.collect {|group| [group.name, group.id]}, { include_blank: false }, class: "form-select py-3 mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50", placeholder: "Categories" %>
     </div>
 
 
