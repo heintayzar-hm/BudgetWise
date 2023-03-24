@@ -1,5 +1,5 @@
 <main class="min-h-screen flex flex-col bg-slate-100">
-<%= form_with url: contracts_path, method: :post, local: true, class:"", scope: :contract do |f| %>
+<%= form_with model: @contract, url: contracts_path, method: :post, class:"", scope: :contract do |f| %>
   <% content_for :page_title do %>
     New Transaction
   <% end %>
