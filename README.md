@@ -83,7 +83,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Link](https://recipe-app-jk5k.onrender.com/)
+- [Live Link](https://budgetwise-nut9.onrender.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -200,6 +200,7 @@ Feel free to check the [issues page](https://github.com/heintayzar-hm/BudgetWise
 
 - Thanks to the Microverse team for the great curriculum.
 - Hat tip to anyone whose code was used.
+- Original design idea by [Gregoire Vella on Behance](https://www.behance.net/gregoirevell).
 
 <!-- LICENSE -->
 
