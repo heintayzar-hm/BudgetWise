@@ -9,7 +9,7 @@
 
 
 <div class="p-3 text-lg flex justify-between bg-white">
-<span>Total Amount For This Category: </span> <span> <%= @group.total%></span>
+<span>Total Amount For This Category: </span> <span> $<%= @group.total%></span>
 </div>
 <ul class="flex flex-col m-4 gap-5 grow cards">
   <% @contracts.each do |contract| %>
@@ -23,7 +23,7 @@
       <span><%= contract.name.truncate(20) %></span>
      <span>  <%= contract.human_date%></span>
      </div>
-     <span class="col-span-1">  <%= contract.amount%></span>
+     <span class="col-span-1">  $<%= contract.amount%></span>
      </li>
 
   <% end %>

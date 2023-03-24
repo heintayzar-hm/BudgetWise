@@ -20,7 +20,7 @@
       <span><%= group.name.truncate(20) %></span>
      <span>  <%= group.human_date%></span>
      </div>
-     <span class="col-span-1">  <%= group.total.to_s.truncate(9)%></span>
+     <span class="col-span-1"> $<%= group.total.to_s.truncate(9)%></span>
      </a>
     </li>
   <% end %>
