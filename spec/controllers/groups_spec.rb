@@ -63,7 +63,7 @@ RSpec.describe GroupsController, type: :controller do
         group.contracts << contract1
         group.contracts << contract2
         get :show, params: { id: group.id }
-        expect(assigns(:contracts)).to eq([contract2, contract1])
+        expect(assigns(:contracts)).to eq([contract1, contract2])
       end
 
       it 'renders the show template' do
