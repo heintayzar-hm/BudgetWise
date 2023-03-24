@@ -12,19 +12,19 @@ class ContractsController < ApplicationController
 
     if @contract.save
       @contract.groups << @group
-      flash[:notice] = "Transaction created successfully."
+      flash[:notice] = 'Transaction created successfully.'
 
       redirect_to root_path
     else
       @groups = current_user.groups
-      flash[:alert] = "Transaction creation failed"
+      flash[:alert] = 'Transaction creation failed'
       render :new
     end
   end
 
   private
+
   def contract_params
     params.require(:contract).permit(:name, :amount, :group_id)
   end
-
 end

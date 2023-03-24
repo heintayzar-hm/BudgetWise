@@ -3,7 +3,7 @@ require_relative '../support/controller_auth'
 
 RSpec.describe SplashController, type: :controller do
   extend ControllerAuth
-  describe "GET /" do
+  describe 'GET /' do
     login_user
 
     context 'when user is logged in' do
@@ -14,7 +14,7 @@ RSpec.describe SplashController, type: :controller do
     end
   end
 
-  describe "GET / not log in" do
+  describe 'GET / not log in' do
     context 'when user is not logged in' do
       it 'should return a 200 response' do
         get :index

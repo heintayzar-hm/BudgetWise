@@ -20,10 +20,10 @@ describe '/contract/ new', type: :feature do
     click_button 'Create'
 
     expect(page).to have_text('Group was successfully created.')
-      click_link 'Test Group'
-      expect(page).to have_text('0.0') # no contracts
+    click_link 'Test Group'
+    expect(page).to have_text('0.0') # no contracts
 
-      click_link 'New Transaction'
+    click_link 'New Transaction'
 
     expect(page).to have_text('New Transaction')
 
@@ -35,6 +35,5 @@ describe '/contract/ new', type: :feature do
     click_button 'Create'
 
     expect(page).to have_text('Transaction created successfully.')
-
   end
 end
