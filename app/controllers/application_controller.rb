@@ -17,10 +17,10 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(_resource)
-    groups_path
+    groups_path # groups path
   end
 
   def after_sign_out_path_for(_resource)
-    root_path
+    root_path # splash path
   end
 end

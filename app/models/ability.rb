@@ -5,6 +5,14 @@ class Ability
 
   def initialize(user)
 
+    user = User.new if user.nil?
+
+    return unless user.present?
+    can :manage, Group, author_id: user.id
+    can :manage, Contract, author_id: user.id
+
+    return unless user.admin?
+
     can :manage, :all
     # Define abilities for the user here. For example:
     #
