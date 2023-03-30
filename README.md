@@ -84,6 +84,7 @@
 ## 🚀 Live Demo <a name="live-demo"></a>
 
 - [Live Link](https://budgetwise-nut9.onrender.com/)
+- [Loom]( https://www.loom.com/share/0b6bcdc1393b46fe879c70e72d38b99f)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
