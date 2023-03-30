@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BudgetWise</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,300&family=Pacifico&display=swap" rel="stylesheet">    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+      colors: {
+        // Configure your color palette here
+        mainTheme: '#3778c2',
+        darkTheme: '#06b6d4',
+        mainTheme2: "#5fb523",
+        mainTheme3: "#434b54"
+      },
+      boxShadow: {
+        "custom": '-1px 1px 20px 7px red'
+      }
+          },
+          fontFamily: {
+      important: ["Pacifico", "sans-serif"],
+      normal: ["Cormorant Garamond", "sans-serif"],
+          },
+        },
+        darkMode: 'class',
+
+      }
+    </script>
+<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'false' %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'false' %>
+  </head>
+  <body class="text-black dark:text-white font-normal">
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<main class="min-h-screen flex flex-col bg-slate-100">
+<%= form_with model:  @group,url: groups_path, method: :post, local: true, class:"", scope: :group do |f| %>
+  <% content_for :page_title do %>
+    New Category
+  <% end %>
+  <% content_for :submit do %>
+    <%= f.submit "Create" %>
+  <% end %>
+<%= render partial: "components/navbar", locals: {back: true, show_search_bar: false}%>
+    <%= render partial: "/components/errors_message", locals: {object: @group} %>
+
+
+
+  <div class="my-3 px-2 bg-white flex flex-col gap-4">
+    <div class="field">
+     <%= f.text_field :name,placeholder:"Name",required: true, autofocus: true, autocomplete: "name", class:"w-full bg-white border-b border-slate-200 border-t border-slate-200 focus:outline-none p-2" %>
+    </div>
+
+    <div class="field">
+      <%= f.file_field :icon,required: true, class:"w-full bg-white border-b border-slate-200 border-t border-slate-200 focus:outline-none p-2"  %>
+    </div>
+
+
+
+  </div>
+<% end %>
+</main>

@@ -1,0 +1,36 @@
+<% content_for :page_title do %>
+  Transaction
+<% end %>
+<% show_search_bar = true %>
+<main class="bg-slate-200 flex min-h-screen flex-col">
+
+<%= render partial: '/components/navbar', locals: { show_search_bar: show_search_bar, back: true } %>
+<%= render partial: '/components/sorting_component' %>
+
+
+<div class="p-3 text-lg flex justify-between bg-white">
+<span>Total Amount For This Category: </span> <span> $<%= @group.total%></span>
+</div>
+<ul class="flex flex-col m-4 gap-5 grow cards">
+  <% @contracts.each do |contract| %>
+
+     <li class="grid gap-4 grid-cols-4 p-2 bg-white max-h-[120px]">
+     <div class="col-span-1">
+      <%= image_tag url_for(@group.icon) ,class: " max-h-[100px] " if @group.icon.present? %>
+      <%= image_tag "mainImage2.png", class: "max-h-[100px]" unless @group.icon.present?%>
+     </div>
+     <div class="col-span-2 flex flex-col justify-between">
+      <span><%= contract.name.truncate(20) %></span>
+     <span>  <%= contract.human_date%></span>
+     </div>
+     <span class="col-span-1">  $<%= contract.amount%></span>
+     </li>
+
+  <% end %>
+</ul>
+
+
+<div class="bg-mainTheme2 text-white text-center font-important font-semibold p-1 block">
+<%= link_to "New Transaction", new_contract_path(anchor: @group.id), id:"new-contracts", class: "w-full border-white border-solid  border-2 block"%>
+</div>
+</main>
