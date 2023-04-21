@@ -1,10 +1,8 @@
-# BudgetWise
+# BudgetWise    <img src="./app/assets/images/mainImage2.png" width="50" align="center"></img>
 
 <div align="center">
 
-![icon](./app/assets/images/mainImage2.png)
-![ruby-on-rails](https://img.shields.io/badge/ruby_on_rails-%23CC342D.svg?style=for-the-badge&logo=ruby&logoColor=white)
-
+![](https://github.com/heintayzar-hm/BudgetWise/blob/dev/secure_your_money.gif)
 </div>
 <!-- TABLE OF CONTENTS -->
 
